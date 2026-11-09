@@ -1,0 +1,46 @@
+{
+  "complete": true,
+  "duration_seconds": 300.0252788750222,
+  "samples": 61,
+  "host_cpu_percent_one_core_mean": 5.062295081967213,
+  "host_cpu_percent_one_core_max": 6.1,
+  "footprint": [
+    {
+      "second": 0,
+      "footprint_MB": 238.2
+    },
+    {
+      "second": 60,
+      "footprint_MB": 238.9
+    },
+    {
+      "second": 120,
+      "footprint_MB": 238.9
+    },
+    {
+      "second": 180,
+      "footprint_MB": 238.9
+    },
+    {
+      "second": 240,
+      "footprint_MB": 238.9
+    },
+    {
+      "second": 300,
+      "footprint_MB": 238.9
+    }
+  ],
+  "start_seeds": [
+    "14243454013052380386",
+    "18095898002866301127",
+    "16154074017197589225"
+  ],
+  "post_exit_footprint_MB": [
+    17.5,
+    24.7,
+    25.0
+  ],
+  "settled_footprint_MB": 17.6,
+  "heap_leaks_detected": 0,
+  "visible_motion_and_different_starts": "confirmed by user for all 3 launches"
+}
