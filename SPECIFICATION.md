@@ -8,7 +8,7 @@ Build a complete native macOS screensaver with a live three-body simulation. Del
 
 Priorities: image and motion quality, reliable screensaver operation, energy efficiency, then additional settings. Working physics and installation are necessary but do not establish product readiness.
 
-Visual direction: three luminous stars in cyan, rose, and gold against an almost black blue background; thin fading trails; a perspective grid below, with gravitational depressions. The supplied reference image guides the visual treatment, not its headings, numbers, or portrait layout. The description must also be sufficient without the image.
+Visual direction: three luminous stars in cyan, rose, and gold against an almost black blue background; thin fading trails; a perspective grid below, with gravitational depressions. This description defines the visual direction without an external reference image.
 
 Initial decisions: Swift and Metal, Apple Silicon, two visual modes, no sound. Resolve minor ambiguities independently and document choices in the README. Avoid unnecessary scope expansion.
 
