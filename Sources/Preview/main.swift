@@ -235,7 +235,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     let stack = NSStackView(views: [titles])
     stack.spacing = 12
     stack.translatesAutoresizingMaskIntoConstraints = false
-    controls.addSubview(stack)
     for (title, action, tip) in [
       ("Pause", #selector(pause(_:)), "Space · Pause / resume"),
       ("Next", #selector(next(_:)), "N · Next scene"),
@@ -247,13 +246,30 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
       b.toolTip = tip
       stack.addArrangedSubview(b)
     }
+    let screenSaverButton = NSButton(
+      title: "Open Screen Saver Settings", target: self, action: #selector(openScreenSaverSettings(_:)))
+    screenSaverButton.bezelStyle = .rounded
+    screenSaverButton.toolTip = "Open System Settings to choose ThreeBody as your screen saver."
+    let instructions = NSTextField(wrappingLabelWithString:
+      "Select ThreeBody as your screen saver. If it is missing, install the ThreeBody package first.")
+    instructions.font = .systemFont(ofSize: 11)
+    instructions.textColor = .secondaryLabelColor
+    instructions.widthAnchor.constraint(equalToConstant: 280).isActive = true
+    let installation = NSStackView(views: [screenSaverButton, instructions])
+    installation.spacing = 12
+    let content = NSStackView(views: [stack, installation])
+    content.orientation = .vertical
+    content.alignment = .leading
+    content.spacing = 12
+    content.translatesAutoresizingMaskIntoConstraints = false
+    controls.addSubview(content)
     NSLayoutConstraint.activate([
       controls.centerXAnchor.constraint(equalTo: metal.centerXAnchor),
       controls.bottomAnchor.constraint(equalTo: metal.bottomAnchor, constant: -24),
-      stack.leadingAnchor.constraint(equalTo: controls.leadingAnchor, constant: 20),
-      stack.trailingAnchor.constraint(equalTo: controls.trailingAnchor, constant: -20),
-      stack.topAnchor.constraint(equalTo: controls.topAnchor, constant: 16),
-      stack.bottomAnchor.constraint(equalTo: controls.bottomAnchor, constant: -16),
+      content.leadingAnchor.constraint(equalTo: controls.leadingAnchor, constant: 20),
+      content.trailingAnchor.constraint(equalTo: controls.trailingAnchor, constant: -20),
+      content.topAnchor.constraint(equalTo: controls.topAnchor, constant: 16),
+      content.bottomAnchor.constraint(equalTo: controls.bottomAnchor, constant: -16),
     ])
     diagnostics.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
     diagnostics.textColor = .secondaryLabelColor
@@ -266,6 +282,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
       diagnostics.topAnchor.constraint(equalTo: metal.topAnchor, constant: 48),
     ])
   }
+  @objc func openScreenSaverSettings(_ sender: Any?) {
+    // Tahoe moved Screen Saver into Wallpaper settings.
+    let destination: String
+    if #available(macOS 26, *) {
+      destination = "com.apple.Wallpaper-Settings.extension?ScreenSaver"
+    } else {
+      destination = "com.apple.ScreenSaver-Settings.extension"
+    }
+    let url = URL(string: "x-apple.systempreferences:\(destination)")!
+    guard NSWorkspace.shared.open(url) else {
+      let alert = NSAlert()
+      alert.messageText = "Open Screen Saver Settings"
+      alert.informativeText =
+        "Open System Settings and find Screen Saver, then select ThreeBody. If ThreeBody is missing, install the ThreeBody package first."
+      alert.addButton(withTitle: "OK")
+      alert.beginSheetModal(for: window)
+      return
+    }
+  }
+
   func setupMenu() {
     let bar = NSMenu()
     let appItem = NSMenuItem()
@@ -276,6 +312,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     appItem.submenu = app
     app.addItem(withTitle: "Settings…", action: #selector(settings(_:)), keyEquivalent: ",")
       .target = self
+    app.addItem(
+      withTitle: "Open Screen Saver Settings", action: #selector(openScreenSaverSettings(_:)),
+      keyEquivalent: "").target = self
     app.addItem(.separator())
     app.addItem(
       withTitle: "Quit ThreeBody", action: #selector(NSApplication.terminate(_:)),

@@ -2,6 +2,12 @@
 
 Public versions follow MAJOR.MINOR.PATCH, starting at 0.1.0. Previous 1.0.x labels were internal development builds; historical evidence keeps those labels.
 
+## [0.1.1] - 2026-11-10
+
+- Add an English “Open Screen Saver Settings” button, application menu command, and short setup instructions to the preview.
+- Open the Screen Saver pane inside Wallpaper on macOS 26; keep the earlier destination for macOS 14–15.
+- Leave screen saver selection and user settings under user control.
+
 ## [0.1.0] - 2026-11-10
 
 - Establish public versioning in `VERSION` and an independent, increasing bundle build number in `BUILD_NUMBER` (11).
