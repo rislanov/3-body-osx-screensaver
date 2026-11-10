@@ -2,7 +2,6 @@ import AppKit
 import MetalKit
 import ScreenSaver
 
-@objc(ThreeBodyView)
 final class ThreeBodyView: ScreenSaverView {
   private var renderer: Renderer?
   private var metalView: MTKView?
@@ -69,7 +68,13 @@ final class ThreeBodyView: ScreenSaverView {
     capturedDiagnostics = false
     powerCheck = 0
     if !isPreview {
-      checkEngineSession()
+      // Tahoe can label the Settings preview as non-preview. Only bind an
+      // Engine that exists when this view starts, never a later fullscreen run.
+      engine = NSRunningApplication.runningApplications(
+        withBundleIdentifier: "com.apple.ScreenSaver.Engine"
+      ).first { !$0.isTerminated }
+    }
+    if engine != nil {
       let timer = Timer(timeInterval: 0.5, repeats: true) { [weak self] _ in
         self?.checkEngineSession()
       }
@@ -80,7 +85,7 @@ final class ThreeBodyView: ScreenSaverView {
     statsStart = CACurrentMediaTime()
     statsFrames = renderer?.submittedFrames ?? 0
     NSLog(
-      "ThreeBody 1.0.9 start preview=%d size=%.0fx%.0f", isPreview ? 1 : 0, bounds.width,
+      "ThreeBody start preview=%d size=%.0fx%.0f", isPreview ? 1 : 0, bounds.width,
       bounds.height)
     lastTime = nil
     super.startAnimation()
@@ -112,7 +117,7 @@ final class ThreeBodyView: ScreenSaverView {
     if now - statsStart >= 60 {
       let frames = r.submittedFrames - statsFrames
       NSLog(
-        "ThreeBody 1.0.9 heartbeat fps=%.2f sim=%.3f drawable=%llu %@",
+        "ThreeBody heartbeat fps=%.2f sim=%.3f drawable=%llu %@",
         Double(frames) / (now - statsStart), r.scene.physics.time, r.lastDrawableID, r.metrics)
       statsStart = now
       statsFrames = r.submittedFrames
@@ -185,11 +190,6 @@ final class ThreeBodyView: ScreenSaverView {
         recordLifecycle("engine-terminated")
         stopAnimation()
       }
-    } else {
-      engine = NSRunningApplication.runningApplications(
-        withBundleIdentifier: "com.apple.ScreenSaver.Engine"
-      ).first { !$0.isTerminated }
-      if engine != nil { recordLifecycle("engine-bound") }
     }
   }
   override func viewDidMoveToWindow() {

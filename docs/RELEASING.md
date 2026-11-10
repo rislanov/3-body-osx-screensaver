@@ -57,3 +57,13 @@ Keep both the PKG and ZIP beside the checksum file when checking it. Checksums d
 Current builds use ad-hoc code signatures; the installer is unsigned and no notarization occurs. This produces development artifacts, not a Gatekeeper-approved external distribution. Downloaded artifacts may be blocked.
 
 To add trusted distribution, configure Developer ID Application signing for both bundles, assess hardened runtime compatibility with the saver host, sign the installer with Developer ID Installer, submit it through `notarytool`, staple the accepted ticket, then validate a downloaded package on a clean Mac. Certificates and notarization credentials are not available or configured by this workflow. Do not disable Gatekeeper to compensate.
+
+## Moving from a per-user installation
+
+A running `legacyScreenSaver` process may retain the old module and its original bundle URL even after System Settings is closed. Moving `~/Library/Screen Savers/ThreeBody.saver` while that module is loaded can leave it unable to locate its resources, producing black output. Installing a valid system-wide package does not unload the earlier library.
+
+Keep the original path available during migration. On the development Mac, after the old per-user bundle had been backed up, a compatibility symlink from `~/Library/Screen Savers/ThreeBody.saver` to `/Library/Screen Savers/ThreeBody.saver` restored the existing host's resource access. This is one installed bundle with a second path, not a second binary copy. Do not overwrite an existing bundle or unrelated symlink blindly.
+
+For a clean transition, finish work and log out/in after installing the system-wide package; remove only the compatibility link once the old host is gone, then select the system-wide ThreeBody if necessary. Do not terminate the system host from the installer or alter lock/security settings. Reopen System Settings to refresh a cached gallery thumbnail.
+
+After migration, verify visible motion in System Settings and in a real fullscreen ScreenSaverEngine session. Package/signature checks and standalone preview rendering do not establish that the installed host is working.

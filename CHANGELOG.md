@@ -2,6 +2,12 @@
 
 Public versions follow MAJOR.MINOR.PATCH, starting at 0.1.0. Previous 1.0.x labels were internal development builds; historical evidence keeps those labels.
 
+## [0.1.3] - 2026-11-10
+
+- Fix the Settings preview stopping when a later fullscreen ScreenSaverEngine session ends. Bind only an engine already running when the view starts.
+- Use the module-qualified saver principal class to avoid the old global Objective-C class name.
+- Document safe migration from a per-user bundle and verify the installed saver in Settings and two fullscreen sessions.
+
 ## [0.1.2] - 2026-11-10
 
 - Add a custom figure-eight gallery thumbnail with three colored bodies, including a Retina asset, instead of the generic screen saver image.

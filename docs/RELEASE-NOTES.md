@@ -1,10 +1,12 @@
-ThreeBody 0.1.2 adds a custom screen saver gallery thumbnail.
+ThreeBody 0.1.3 fixes black previews after a fullscreen session.
 
-- A dark figure-eight orbit with cyan, pink, and gold bodies replaces the generic gallery artwork.
-- Includes standard and Retina PNG assets and explicit screen saver thumbnail metadata.
-- Package verification checks both thumbnail dimensions and their presence in the installer payload.
-- Includes the English Open Screen Saver Settings button and setup instructions introduced in 0.1.1.
-- Version 0.1.2, build 13. Apple Silicon; macOS 14 or later deployment target.
+- The Settings preview no longer attaches itself to an unrelated ScreenSaverEngine launched later.
+- The saver uses the module-qualified principal class `ThreeBodySaver.ThreeBodyView`.
+- Migration instructions explain how a retained per-user module can lose access to resources when its original path is removed.
+- Retains the figure-eight gallery thumbnail and English setup button.
+- Version 0.1.3, build 14. Apple Silicon; macOS 14 or later deployment target.
+
+The local installed build was checked in System Settings and two fullscreen sessions on the development Mac. See [the regression report](validation/black-preview-0.1.3.md) for evidence and limits.
 
 The PKG installs the preview to `/Applications` and the saver to `/Library/Screen Savers` with administrator authorization. Screen saver selection remains manual. ZIP and SHA-256 checksums are also provided.
 

@@ -4,7 +4,7 @@ A native macOS screensaver with three stars, live Newtonian dynamics, and a gent
 
 ![Gravity Fabric](docs/media/gravity-fabric.png)
 
-**Current version: 0.1.2.** Apple Silicon only; macOS 14 or later is the deployment target. See the [validation report](docs/ACCEPTANCE.md) for the hardware and OS versions actually tested.
+**Current version: 0.1.3.** Apple Silicon only; macOS 14 or later is the deployment target. See the [validation report](docs/ACCEPTANCE.md) for the hardware and OS versions actually tested.
 
 ## Install
 
@@ -13,7 +13,7 @@ Download the `.pkg` from [GitHub Releases](https://github.com/rislanov/3-body-os
 - `/Applications/ThreeBodyPreview.app`
 - `/Library/Screen Savers/ThreeBody.saver`
 
-Select ThreeBody in System Settings → Screen Saver after installation. The installer does not select the saver, change lock settings, or terminate the system host. Stop the saver before updating. macOS may keep an old module loaded until logout/login. If you previously installed a per-user copy, remove that exact `~/Library/Screen Savers/ThreeBody.saver` first to avoid two versions.
+Select ThreeBody in System Settings → Screen Saver after installation. The installer does not select the saver, change lock settings, or terminate the system host. Stop the saver before updating. macOS may keep an old module loaded until logout/login. If you previously installed a per-user copy, do not move or remove it while macOS still has it loaded. See the [migration instructions](docs/RELEASING.md#moving-from-a-per-user-installation) before switching to the system-wide package.
 
 The current packages contain **ad-hoc-signed bundles and an unsigned installer; they are not notarized**. Downloaded builds may be blocked by Gatekeeper. For now, building locally is the development path; do not disable system protections. Developer ID distribution requirements are documented in [Releasing](docs/RELEASING.md).
 
@@ -34,7 +34,7 @@ swift test -c release           # physics and scene tests
 ./script/verify.sh              # local GUI lifecycle and image checks
 ```
 
-Outputs: `dist/ThreeBodyPreview.app`, `dist/ThreeBody.saver`, and `dist/ThreeBody-0.1.2-macos-arm64.{pkg,zip,sha256}`. To package an existing build, use `./script/package.sh --no-build`; stale versions and diagnostic builds are rejected.
+Outputs: `dist/ThreeBodyPreview.app`, `dist/ThreeBody.saver`, and `dist/ThreeBody-0.1.3-macos-arm64.{pkg,zip,sha256}`. To package an existing build, use `./script/package.sh --no-build`; stale versions and diagnostic builds are rejected.
 
 The Codex Run action invokes `script/build_and_run.sh`. If Xcode's optional Metal compiler is missing, the build bundles shader source for local runtime compilation. With the compiler installed, the build also includes a compiled metallib.
 
@@ -54,6 +54,7 @@ Randomize each start is enabled by default. Disable it to use a fixed seed. CLI 
 - [Releasing](docs/RELEASING.md): version policy, CI/CD, package layout, and signing status.
 - [Changelog](CHANGELOG.md): changes starting with 0.1.0.
 - [Product specification](SPECIFICATION.md): intended behavior and acceptance targets.
+- [0.1.3 installed regression check](docs/validation/black-preview-0.1.3.md).
 - [Historical acceptance report](docs/ACCEPTANCE.md) and [recorded evidence](docs/validation/README.md): measured results and outstanding checks.
 
 The older `1.0.x` labels were internal development identifiers. Public versioning begins at `0.1.0`; historical evidence retains its original labels.
