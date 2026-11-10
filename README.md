@@ -8,7 +8,7 @@ A native macOS screensaver with three stars, live Newtonian dynamics, and a gent
 
 ## Install
 
-Download the `.pkg` from [GitHub Releases](https://github.com/rislanov/3-body-screensaver/releases). The installer requires administrator authorization and installs:
+Download the `.pkg` from [GitHub Releases](https://github.com/rislanov/3-body-osx-screensaver/releases). The installer requires administrator authorization and installs:
 
 - `/Applications/ThreeBodyPreview.app`
 - `/Library/Screen Savers/ThreeBody.saver`
