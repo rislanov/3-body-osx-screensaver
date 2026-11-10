@@ -1,62 +1,35 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# SwiftPM and local build products
+/.build/
+/.swiftpm/
+/build/
+/dist/
+/DerivedData/
 
-## User settings
+# Local captures, benchmarks, process dumps, and diagnostic logs.
+# Curated documentation media and validation results live under docs/ and are tracked.
+/artifacts/
+
+# Xcode user state and generated diagnostics
 xcuserdata/
-
-## Obj-C/Swift specific
+*.xcuserstate
 *.hmap
-
-## App packaging
-*.ipa
+*.dSYM/
 *.dSYM.zip
-*.dSYM
+*.xcresult/
+*.profraw
+*.profdata
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
+# Python helper caches
+__pycache__/
+*.pyc
+*.pyo
 
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-# Package.resolved
-# *.xcodeproj
-#
-# Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
-# hence it is not needed unless you have added a package configuration file to your project
-# .swiftpm
+# macOS metadata and editor temporary files
+.DS_Store
+._*
+*.swp
+*.swo
+*~
 
-.build/
-
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
-
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
-Carthage/Build/
-
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo.
-# Instead, use fastlane to re-generate the screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
-
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
+# Keep Package.resolved, Resources/, docs/media/, docs/validation/, and the
+# shared .codex/environments/environment.toml configuration in version control.

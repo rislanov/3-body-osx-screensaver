@@ -1,0 +1,82 @@
+[0/1] Planning build
+Building for production...
+[0/4] Write sources
+[2/4] Write swift-version--58304C5D6DBC2206.txt
+[4/5] Compiling ThreeBodyCore Physics.swift
+[5/6] Compiling CoreTests PhysicsTests.swift
+[6/8] Compiling ThreeBodyPackageTests runner.swift
+[6/8] Write Objects.LinkFileList
+[7/8] Linking ThreeBodyPackageTests
+Build complete! (2.12s)
+Test Suite 'All tests' started at 2026-11-09 23:56:03.273.
+Test Suite 'ThreeBodyPackageTests.xctest' started at 2026-11-09 23:56:03.274.
+Test Suite 'PhysicsTests' started at 2026-11-09 23:56:03.274.
+Test Case '-[CoreTests.PhysicsTests testDeterminism]' started.
+Test Case '-[CoreTests.PhysicsTests testDeterminism]' passed (0.003 seconds).
+Test Case '-[CoreTests.PhysicsTests testFigureEightTwentyPeriodsAndReturn]' started.
+Test Case '-[CoreTests.PhysicsTests testFigureEightTwentyPeriodsAndReturn]' passed (0.037 seconds).
+Test Case '-[CoreTests.PhysicsTests testPairForcesAndMomentum]' started.
+Test Case '-[CoreTests.PhysicsTests testPairForcesAndMomentum]' passed (0.006 seconds).
+Test Case '-[CoreTests.PhysicsTests testTwoBodyHundredPeriods]' started.
+Test Case '-[CoreTests.PhysicsTests testTwoBodyHundredPeriods]' passed (0.131 seconds).
+Test Suite 'PhysicsTests' passed at 2026-11-09 23:56:03.451.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.177 (0.177) seconds
+Test Suite 'SceneTests' started at 2026-11-09 23:56:03.451.
+Test Case '-[CoreTests.SceneTests testCinematicKeepsBodiesInsideFrame]' started.
+Test Case '-[CoreTests.SceneTests testCinematicKeepsBodiesInsideFrame]' passed (0.017 seconds).
+Test Case '-[CoreTests.SceneTests testCompositionAllModesSpeedsAndAspectRatios]' started.
+Test Case '-[CoreTests.SceneTests testCompositionAllModesSpeedsAndAspectRatios]' passed (2.081 seconds).
+Test Case '-[CoreTests.SceneTests testFullRawPhysicalHorizons]' started.
+Test Case '-[CoreTests.SceneTests testFullRawPhysicalHorizons]' passed (0.227 seconds).
+Test Case '-[CoreTests.SceneTests testLaterEpisodeReplay]' started.
+Test Case '-[CoreTests.SceneTests testLaterEpisodeReplay]' passed (0.003 seconds).
+Test Case '-[CoreTests.SceneTests testLaunchRandomnessAndReplay]' started.
+Test Case '-[CoreTests.SceneTests testLaunchRandomnessAndReplay]' passed (0.005 seconds).
+Test Case '-[CoreTests.SceneTests testPresetHorizons]' started.
+Test Case '-[CoreTests.SceneTests testPresetHorizons]' passed (0.336 seconds).
+Test Case '-[CoreTests.SceneTests testRestartReplaysTheSameEpisode]' started.
+Test Case '-[CoreTests.SceneTests testRestartReplaysTheSameEpisode]' passed (0.002 seconds).
+Test Case '-[CoreTests.SceneTests testSchedulesAndLongPause]' started.
+Test Case '-[CoreTests.SceneTests testSchedulesAndLongPause]' passed (0.003 seconds).
+Test Case '-[CoreTests.SceneTests testSettingsSanitize]' started.
+Test Case '-[CoreTests.SceneTests testSettingsSanitize]' passed (0.000 seconds).
+Test Case '-[CoreTests.SceneTests testTrailsAndTransitions]' started.
+Test Case '-[CoreTests.SceneTests testTrailsAndTransitions]' passed (0.011 seconds).
+Test Case '-[CoreTests.SceneTests testUnsafeStateTerminates]' started.
+Test Case '-[CoreTests.SceneTests testUnsafeStateTerminates]' passed (0.001 seconds).
+Test Suite 'SceneTests' passed at 2026-11-09 23:56:06.139.
+	 Executed 11 tests, with 0 failures (0 unexpected) in 2.687 (2.688) seconds
+Test Suite 'ThreeBodyPackageTests.xctest' passed at 2026-11-09 23:56:06.139.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.864 (2.865) seconds
+Test Suite 'All tests' passed at 2026-11-09 23:56:06.139.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.864 (2.866) seconds
+eight max normalized energy drift: 3.545978197434729e-08
+two-body max normalized energy drift: 7.098518533761179e-08
+qualified eight speed=0.5 first episode=151.5333333333273 reason=episode duration
+qualified eight speed=1.0 first episode=151.5333333333273 reason=episode duration
+qualified eight speed=2.0 first episode=151.5333333333273 reason=episode duration
+qualified ribbon speed=0.5 first episode=121.533333333329 reason=episode duration
+qualified ribbon speed=1.0 first episode=121.533333333329 reason=episode duration
+qualified ribbon speed=2.0 first episode=121.533333333329 reason=episode duration
+qualified tide speed=0.5 first episode=136.53333333332816 reason=episode duration
+qualified tide speed=1.0 first episode=136.53333333332816 reason=episode duration
+qualified tide speed=2.0 first episode=92.166666666664 reason=close approach limit
+qualified ember speed=0.5 first episode=151.5333333333273 reason=episode duration
+qualified ember speed=1.0 first episode=151.5333333333273 reason=episode duration
+qualified ember speed=2.0 first episode=80.26666666666468 reason=close approach limit
+qualified drift speed=0.5 first episode=166.53333333332645 reason=episode duration
+qualified drift speed=1.0 first episode=166.53333333332645 reason=episode duration
+qualified drift speed=2.0 first episode=123.36666666666223 reason=close approach limit
+qualified binary speed=0.5 first episode=159.83333333332683 reason=composition envelope
+qualified binary speed=1.0 first episode=80.66666666666465 reason=composition envelope
+qualified binary speed=2.0 first episode=22.000000000000252 reason=composition envelope
+qualified satellite speed=0.5 first episode=181.5333333333256 reason=episode duration
+qualified satellite speed=1.0 first episode=174.99999999999264 reason=escape envelope
+qualified satellite speed=2.0 first episode=88.26666666666422 reason=escape envelope
+qualified exchange speed=0.5 first episode=181.5333333333256 reason=episode duration
+qualified exchange speed=1.0 first episode=117.13333333332925 reason=escape envelope
+qualified exchange speed=2.0 first episode=59.333333333332526 reason=escape envelope
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.
