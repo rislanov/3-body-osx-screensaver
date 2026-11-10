@@ -4,7 +4,7 @@ A native macOS screensaver with three stars, live Newtonian dynamics, and a gent
 
 ![Gravity Fabric](docs/media/gravity-fabric.png)
 
-**Current version: 0.1.1.** Apple Silicon only; macOS 14 or later is the deployment target. See the [validation report](docs/ACCEPTANCE.md) for the hardware and OS versions actually tested.
+**Current version: 0.1.2.** Apple Silicon only; macOS 14 or later is the deployment target. See the [validation report](docs/ACCEPTANCE.md) for the hardware and OS versions actually tested.
 
 ## Install
 
@@ -34,7 +34,7 @@ swift test -c release           # physics and scene tests
 ./script/verify.sh              # local GUI lifecycle and image checks
 ```
 
-Outputs: `dist/ThreeBodyPreview.app`, `dist/ThreeBody.saver`, and `dist/ThreeBody-0.1.1-macos-arm64.{pkg,zip,sha256}`. To package an existing build, use `./script/package.sh --no-build`; stale versions and diagnostic builds are rejected.
+Outputs: `dist/ThreeBodyPreview.app`, `dist/ThreeBody.saver`, and `dist/ThreeBody-0.1.2-macos-arm64.{pkg,zip,sha256}`. To package an existing build, use `./script/package.sh --no-build`; stale versions and diagnostic builds are rejected.
 
 The Codex Run action invokes `script/build_and_run.sh`. If Xcode's optional Metal compiler is missing, the build bundles shader source for local runtime compilation. With the compiler installed, the build also includes a compiled metallib.
 

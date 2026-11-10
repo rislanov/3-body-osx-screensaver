@@ -23,11 +23,13 @@ for PRODUCT in ThreeBodyPreview.app ThreeBody.saver; do
   cp Sources/Rendering/Shaders.metal "dist/$PRODUCT/Contents/Resources/"
   if [[ -f build/ThreeBody.metallib ]]; then cp build/ThreeBody.metallib "dist/$PRODUCT/Contents/Resources/"; fi
 done
+cp Resources/thumbnail.png Resources/thumbnail@2x.png dist/ThreeBody.saver/Contents/Resources/
 python3 - <<'PY'
 import os
 import plistlib
 for folder,exe,identifier,kind,principal in [('ThreeBodyPreview.app','ThreeBodyPreview','studio.threebody.preview','APPL','NSApplication'),('ThreeBody.saver','ThreeBody','studio.threebody.saver','BNDL','ThreeBodyView')]:
     d=dict(CFBundleExecutable=exe,CFBundleIdentifier=identifier,CFBundleName='ThreeBody',CFBundlePackageType=kind,CFBundleVersion=os.environ['BUILD_NUMBER'],CFBundleShortVersionString=os.environ['VERSION'],LSMinimumSystemVersion='14.0',NSPrincipalClass=principal,NSHighResolutionCapable=True,CFBundleIconFile='ThreeBody',NSHumanReadableCopyright='ThreeBody contributors')
+    if kind == 'BNDL': d['ScreenSaverThumbnail'] = 'thumbnail.png'
     with open('dist/'+folder+'/Contents/Info.plist','wb') as f: plistlib.dump(d,f)
 PY
 rm -f dist/ThreeBody.saver/Contents/Resources/DiagnosticsEnabled.txt

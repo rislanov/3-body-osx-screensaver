@@ -55,3 +55,7 @@ Episodes fade out for 1.5 s, replace all state in darkness, and fade in for 1.5 
 
 Camera center follows the center of mass slowly. Scale correction has an 8% outward / 22% inward hysteresis band and rate limits. Gravity Fabric is a decorative embedding of the summed potential with independent visual smoothing and bounded depth. It is not general relativity, and never feeds back into dynamics.
 
+
+## Screen saver gallery thumbnail
+
+`Resources/thumbnail.png` (480×312) and `thumbnail@2x.png` (960×624) provide the System Settings gallery artwork. The saver bundle declares `ScreenSaverThumbnail`; this is separate from the app icon and live preview. Regenerate the illustrative three-body figure eight with `swift script/make_thumbnail.swift Resources`. Package verification checks the metadata and both PNG dimensions.

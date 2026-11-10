@@ -9,7 +9,7 @@ WORK="$(mktemp -d "$ROOT/build/verify-package.XXXXXX")"
 trap 'rm -rf "$WORK"' EXIT
 pkgutil --expand-full "dist/$NAME.pkg" "$WORK/expanded"
 python3 - "$WORK/expanded" <<'PY'
-import os, pathlib, plistlib, subprocess, sys
+import os, pathlib, plistlib, struct, subprocess, sys
 import xml.etree.ElementTree as ET
 root = pathlib.Path(sys.argv[1])
 distribution = ET.parse(root / 'Distribution').getroot()
@@ -26,6 +26,12 @@ for relative in ('Applications/ThreeBodyPreview.app', 'Library/Screen Savers/Thr
     assert metadata['CFBundleShortVersionString'] == os.environ['VERSION']
     assert metadata['CFBundleVersion'] == os.environ['BUILD_NUMBER']
     assert not (bundle / 'Contents/Resources/DiagnosticsEnabled.txt').exists()
+    if bundle.suffix == '.saver':
+        assert metadata['ScreenSaverThumbnail'] == 'thumbnail.png'
+        for name, dimensions in [('thumbnail.png', (480, 312)), ('thumbnail@2x.png', (960, 624))]:
+            data = (bundle / 'Contents/Resources' / name).read_bytes()
+            assert data[:8] == b'\x89PNG\r\n\x1a\n'
+            assert struct.unpack('>II', data[16:24]) == dimensions
     subprocess.run(['codesign', '--verify', '--strict', str(bundle)], check=True)
     subprocess.run(['lipo', str(bundle / 'Contents/MacOS' / metadata['CFBundleExecutable']), '-verify_arch', 'arm64'], check=True)
 print('Package payload, versions, architecture, signatures and checksums passed.')

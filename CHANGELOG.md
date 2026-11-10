@@ -2,6 +2,10 @@
 
 Public versions follow MAJOR.MINOR.PATCH, starting at 0.1.0. Previous 1.0.x labels were internal development builds; historical evidence keeps those labels.
 
+## [0.1.2] - 2026-11-10
+
+- Add a custom figure-eight gallery thumbnail with three colored bodies, including a Retina asset, instead of the generic screen saver image.
+
 ## [0.1.1] - 2026-11-10
 
 - Add an English “Open Screen Saver Settings” button, application menu command, and short setup instructions to the preview.
