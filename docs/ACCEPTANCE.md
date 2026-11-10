@@ -1,4 +1,6 @@
-# ThreeBody 1.0.9 — development acceptance report
+# Historical development acceptance report
+
+This report records the pre-release development build labeled **1.0.9 / build 10**. Public versioning now begins at **0.1.0 / build 11**. Historical measurements and filenames below retain their original labels; they are not a new acceptance run for 0.1.0.
 
 Updated November 10, 2026. Version **1.0.9, build 10**. The installed saver passed three successive fullscreen launches and a five-minute monitored run. The user confirmed motion, different starting compositions, and no black screen in those checks. **Full acceptance against the original specification remains incomplete:** the one-hour run, 20 system-host cycles, sleep/wake, and multiple displays have not been verified.
 

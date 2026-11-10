@@ -1,5 +1,7 @@
 # Recorded validation
 
+The `1.0.x` names are historical internal development labels from before public versioning began at `0.1.0`. They have not been renamed or presented as new release measurements.
+
 These files preserve results from the development Mac; they are not automatically regenerated badges or a claim that every platform passes.
 
 - `core-tests-1.0.9.log`: 15 core tests, including randomized launch and deterministic replay.
